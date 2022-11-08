@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Weather Dashboard | Dylan X. Sinclair | CS, Economics & Quantitative Finance | Portland, ME</title>
+      <!-- <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.0.1/css/bootstrap.min.css"> -->
+      <!-- <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.11.1/css/dataTables.bootstrap5.min.css"> -->
+  <script type="text/javascript" language="javascript" src="https://code.jquery.com/jquery-3.5.1.js"></script>
+  <script type="text/javascript" language="javascript" src="https://cdn.datatables.net/1.11.1/js/jquery.dataTables.min.js"></script>
+  <script type="text/javascript" language="javascript" src="https://cdn.datatables.net/1.11.1/js/dataTables.bootstrap5.min.js"></script>
+	<script src="https://code.jscharting.com/2.9.0/jscharting.js"></script>
+  <link href="wd2.css" rel="stylesheet" type="text/css" media="screen and (max-width: 999px)" />
+  <link href="wd1.css" rel="stylesheet" type="text/css" media="screen and (min-width: 1000px)" />
+  <meta name="description" content="Weather Dashboard by Dylan Sinclair">
+  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+  <script src="wd.js"></script>
+  <link href="/images/wdIco.png" rel="icon" type:"image/x-icon">
+</head>
+<body>
+  <div id="navBar">
+		<div id="navCont">
+			<ul>
+				<li><a>Hunt & Fish</a></li>
+				<li>|</li>
+				<li><a id="weatherLink">Weather & Tidal</a></li>
+				<li>|</li>
+				<li><a id="riverLink">River Data</a></li>
+			</ul>
+		</div>
+  </div>
+  <div id="mainCont">
+		<div id="cont1">
+			<div id="headDash">
+				<p>Penobscot River Flow: <span id="pnFlow"></span> CFS &emsp; Stage: <span id="pnHt"></span> ft</p>
+		    <p>Royal River Flow: <span id="rrFlow"></span> CFS &emsp; Stage: <span id="rrHt"></span> ft</p>
+				<p id="updatP">Last Updated: <span id="lastUpdated">[Updating...]</span></p>
+			</div>
+		</div>
+		<div id="cont1b">
+			<h1>Switch view: </h1>
+			<button id="btn1">30 day</button>
+		</div>
+		<div id="chartDiv" class="jscChart"></div>
+		<div id="chart2Div" class="jscChart"></div>
+		<div id="chart3Div" class="jscChart"></div>
+		<div id="chart4Div" class="jscChart"></div>
+		<div id="testZone" class="wordwrap">
+			<p id="tstStr">Test</p>
+			<p id="tstStr2">Test</p>
+			<p id="tstStr3">Test</p>
+		</div>
+  </div>
+</div id="weatherCont"></div>
+</body>
+</html>
