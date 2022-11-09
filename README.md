@@ -3,5 +3,6 @@
 <ul>
 <li><p>Main Site: <a href="http://dylanxsinclair.com">dylanxsinclair.com</p></li>
 <ul><li><p>Weather Dashboard: <a href="http://dylanxsinclair.com/WeatherDashboard">dylanxsinclair.com/WeatherDashboard</p></li>
-<li><p>Photography: <a href="http://dylanxsinclair.com/Photography">dylanxsinclair.com/Photography</p></li></ul>
+<ul><li><p>Sandbox: <a href="http://dylanxsinclair.com/sandbox">dylanxsinclair.com/sandbox</p></li>
+<!-- <li><p>Photography: <a href="http://dylanxsinclair.com/Photography">dylanxsinclair.com/Photography</p></li></ul> -->
 </ul>
