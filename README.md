@@ -1,7 +1,7 @@
 <h3>Official Repository for the DXS Portfolio Site</h3>
 <h6>Dylan X. Sinclair (c) 2022</h6>
 <br>
-GitHub Table of Contents:
+Repo Table of Contents:
 <ul>
 <li><p>Main Repo: <a href="https://github.com/dylanx300/DXS-portfolio-site-repo/">github.com/dylanx300/DXS-portfolio-site-repo/</p></li>
 <ul><li><p>Weather Dashboard: <a href="https://github.com/dylanx300/DXS-portfolio-site-repo/tree/main/public_html/WeatherDashboard">github.com/dylanx300/DXS-portfolio-site-repo/tree/main/public_html/WeatherDashboard</p></li>
