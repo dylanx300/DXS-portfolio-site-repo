@@ -1,9 +1,9 @@
 .wordwrap {
-   white-space: pre-wrap;      /* CSS3 */
-   white-space: -moz-pre-wrap; /* Firefox */
-   white-space: -pre-wrap;     /* Opera <7 */
-   white-space: -o-pre-wrap;   /* Opera 7 */
-   word-wrap: break-word;      /* IE */
+  white-space: pre-wrap;      /* CSS3 */
+  white-space: -moz-pre-wrap; /* Firefox */
+  white-space: -pre-wrap;     /* Opera <7 */
+  white-space: -o-pre-wrap;   /* Opera 7 */
+  word-wrap: break-word;      /* IE */
 }
 
 html, body {
@@ -13,12 +13,22 @@ html, body {
   /* background-color: rgb(194,219,252); */
   background-color: black;
   /* background-image: url('../images/meshGradients/Mesh 56.jpg'); */
-  background: rgb(182,227,193);
-  background: linear-gradient(52deg, rgba(182,227,193,1) 0%, rgba(197,222,249,1) 35%, rgba(68,200,250,1) 100%);
-  background-size: auto;
+  background: rgb(73,100,105);
+  background: linear-gradient(129deg, rgba(73,100,105,1) 2%, rgb(22,38,21,1) 27%, rgba(255,176,50,1) 43%, rgba(255,212,153,1) 56%, rgb(125 187 255) 71%, rgba(68,200,250,1) 100%);
+  background-size: 400% 400%;
+  background-position: 100% 100%;
+  background-repeat: no-repeat;
   height: 1000px;
   max-width: 100%;
   overflow-x: hidden;
+}
+/* .bodyWthrBg {
+background: rgb(27,12,59);
+background: linear-gradient(129deg, rgba(27,12,59,1) 0%, rgba(46,46,106,1) 35%, rgba(61,142,158,1) 100%);
+} */
+.bodyWthr {
+  background-position: 0% 0%;
+  transition: 2s;
 }
 #navBar {
   width: 100%;
@@ -32,8 +42,8 @@ html, body {
   z-index: 7;
   border-bottom: 1px solid rgb(37,18,10);
   box-shadow: 0 5px 6px rgba(0, 0, 0, 0.3)  ;
-	-webkit-box-shadow: 0 5px 6px rgba(0, 0, 0, 0.3)  ;
-	-moz-box-shadow: 0 5px 6px rgba(0, 0, 0, 0.3)  ;
+  -webkit-box-shadow: 0 5px 6px rgba(0, 0, 0, 0.3)  ;
+  -moz-box-shadow: 0 5px 6px rgba(0, 0, 0, 0.3)  ;
 }
 #navCont {
   height: 50px;
@@ -79,12 +89,12 @@ html, body {
   position: absolute;
 }
 @keyframes gtfo {
-    from {
-        right: -50vw;
-    }
-    to {
-        right: 50vw;
-    }
+  from {
+    right: -50vw;
+  }
+  to {
+    right: 50vw;
+  }
 }
 #mainCont {
   width: 100%;
@@ -154,6 +164,27 @@ html, body {
   transform: translate(-50%);
   margin-top: 30px;
 }
+.jscChartHide {
+  transform: translate(100%);
+  position: absolute;
+}
 #testZone {
   width: 100%;
+}
+#weatherCont {
+  position: absolute;
+  top:0px;
+  background-color: gray;
+  border-radius: 10px;
+  width: 90%;
+  height: 300px;
+  font-size: 20px;
+  color: white;
+  text-align: center;
+  margin-top: 120px;
+  margin-left: 50%;
+  transform: translate(-200%);
+  transition: 0.5s;
+}
+#weatherCont h1 {
 }
