@@ -54,14 +54,14 @@ $(document).ready(function() {
       var PBmaxFlow = Math.max(...PbFlowArr)+(0.1*(Math.max(...PbFlowArr))); var RYmaxFlow = Math.max(...RyFlowArr)+(0.1*(Math.max(...RyFlowArr))) //Math.max(...RyFlowArr)+(0.1*(Math.max(...RyFlowArr)))
       var PBminFlow7d = Math.min(...PbFlowArr7d)-(0.1*(Math.min(...PbFlowArr7d))); var RYminFlow7d = Math.min(...RyFlowArr7d)-(0.1*(Math.min(...RyFlowArr7d)))
       var PBmaxFlow7d = Math.max(...PbFlowArr7d)+(0.1*(Math.max(...PbFlowArr7d))); var RYmaxFlow7d = Math.max(...RyFlowArr7d)+(0.1*(Math.max(...RyFlowArr7d)))
-      $("#tstStr").html(JSON.stringify(RyChartArr)) //.replace(/.000-04:00/g,"")
+      //$("#tstStr").html(JSON.stringify(RyChartArr)) //.replace(/.000-04:00/g,"")
       $("#pnFlow").text(PbFlowArr[PbFlowArr.length - 1])
       $("#pnHt").text(PbStageArr[PbStageArr.length - 1])
       $("#rrFlow").text(RyFlowArr[RyFlowArr.length - 1])
       $("#rrHt").text(RyStageArr[RyStageArr.length - 1])
       $("#lastUpdated").text((PbDtArr[PbDtArr.length - 1]).slice(0,-10).replace("T", " ")+" [LIVE]")
       $("#cont1 #lastUpdated").css("color","rgb(0, 255, 0)")
-      $("#tstStr").html(JSON.stringify(JSON1))
+      //$("#tstStr").html(JSON.stringify(JSON1))
       // function Update_xAxis7() {
       //   chart.series().options({ type:'Area Step' })
       // };
@@ -264,32 +264,55 @@ $(document).ready(function() {
       },5000);
     }
   }
-  checkUpdte();
+  // checkUpdte();
   $("#btn1").click(function() {
     if ($("#btn1").text()=="30 day") {
       $("#btn1").text("7 day");
-      $("#chartDiv").hide()
-      $("#chart2Div").hide()
-      $("#chart3Div").show()
-      $("#chart4Div").show()
+      $("#chartDiv").css("transform","translate(100%)");  $("#chartDiv").css("position","absolute");
+      $("#chart2Div").css("transform","translate(100%)"); $("#chart2Div").css("position","absolute");
+      $("#chart3Div").css("transform","translate(-50%)"); $("#chart3Div").css("position","static");
+      $("#chart4Div").css("transform","translate(-50%)"); $("#chart4Div").css("position","static");
     } else if ($("#btn1").text()=="7 day") {
-      $("#btn1").text("30 day")
-      $("#chartDiv").show()
-      $("#chart2Div").show()
-      $("#chart3Div").hide()
-      $("#chart4Div").hide()
+      $("#btn1").text("30 day");
+      $("#chartDiv").css("transform","translate(-50%)");  $("#chartDiv").css("position","static");
+      $("#chart2Div").css("transform","translate(-50%)"); $("#chart2Div").css("position","static");
+      $("#chart3Div").css("transform","translate(100%)"); $("#chart3Div").css("position","absolute");
+      $("#chart4Div").css("transform","translate(100%)"); $("#chart4Div").css("position","absolute");
     };
   });
+  // $("#btn1").click(function() {
+  //   if ($("#btn1").text()=="30 day") {
+  //     $("#btn1").text("7 day");
+  //     $("#chartDiv").hide()
+  //     $("#chart2Div").hide()
+  //     $("#chart3Div").show()
+  //     $("#chart4Div").show()
+  //   } else if ($("#btn1").text()=="7 day") {
+  //     $("#btn1").text("30 day")
+  //     $("#chartDiv").show()
+  //     $("#chart2Div").show()
+  //     $("#chart3Div").hide()
+  //     $("#chart4Div").hide()
+  //   };
+  // });
+  var chkJuan = 0
   var vWidth = $(window).width();
   $("#weatherLink").click(function() {
-    if ($("#mainCont").css("position") == "static") {
+    if (chkJuan == 0) {
       $("#mainCont").css("transition","1.7s")
-      $("#mainCont").css("position","absolute")
+      //$("#mainCont").css("position","absolute")
+      chkJuan = 1
       $("#mainCont").css("transform","translate(100%)")
+      $("body").addClass("bodyWthr");$("body").css("transition","1s")
+      $("#weatherCont").css("transition","1s 0.5s");$("#weatherCont").css("transform","translate(-50%)");
+
     } else {
+      chkJuan = 0
       $("#mainCont").css("transition","0.8s")
       $("#mainCont").css("position","static")
       $("#mainCont").css("transform","translate(-50%)")
+      $("body").removeClass("bodyWthr");$("body").css("transition","1s")
+      $("#weatherCont").css("transition","0.5s");$("#weatherCont").css("position","absolute"); $("#weatherCont").css("transform","translate(-180%)")
     };
     //Previous jQuery animations replaces with css
     // $("#tstStr").html($("#mainCont").is(":visible"))
