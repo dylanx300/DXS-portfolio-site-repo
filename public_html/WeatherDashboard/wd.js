@@ -1,17 +1,12 @@
 $(document).ready(function() {
-  // $("#desc1").mouseenter(function(){
-	// 	$("#desc1 h1").stop().animate({color:"#09F"}, 170);
-	// 	});
-	// $("#desc1").mouseleave(function(){
-	// 	$("#desc1 h1").stop().animate({color:"#FFF"}, 170);
-	// 	});
   // fetch 2 days of data on the Penobscot (01034500) and the Royal (01060000)
-  // note that fetch is an asynch function so global variables declared inside will not be ready before complier conintues onward, moving chart logic inside the function
+  // note that fetch is an asynch function so global variables declared inside will not be ready before complier conintues onward
+  // this is why the JSCharting part of the script remains inside the fetch function
   fetch("https://waterservices.usgs.gov/nwis/iv/?format=json&indent=on&sites=01060000,01034500&period=P30D&parameterCd=00060,00065&siteStatus=all")
     .then((response) => {return response.json()})
     .then((data) => {
       const JSON1 = data;
-      //const JSONi = JSON1.value.timeSeries[0].values[0].value;
+      // Parse JSON to get flow values, stage, and datetimes -- outputs are arrays i.e. [18000,18100,18300, ...]
       //Penobscot River
       const JSONpbV = JSON1.value.timeSeries[0].values[0].value.map(a => a.value); //.map(function(a) {return a.value;});
       const JSONpbH = JSON1.value.timeSeries[1].values[0].value.map(a => a.value);
@@ -20,23 +15,32 @@ $(document).ready(function() {
       const JSONryV = JSON1.value.timeSeries[2].values[0].value.map(a => a.value);
       const JSONryH = JSON1.value.timeSeries[3].values[0].value.map(a => a.value);
       const JSONryDT = JSON1.value.timeSeries[2].values[0].value.map(a => a.dateTime);
-      //used to use regex to remove timezone, but z was inconsistent in data and chart appears to calculate local time fine either way
+      // Used to use regex to remove timezone, but z was inconsistent in data and chart appears to calculate local time fine either way
       //const JSONpbDT1 = JSON.parse(JSON.stringify(JSONpbDT).replace(/.000-04:00/g,""))
-      //$("#tstStr").html(JSON12)
+      // init array variables
       var PbChartArr = []; var PbFlowArr = []; var PbStageArr = []; var PbDtArr = [];
       var RyChartArr = []; var RyFlowArr = []; var RyStageArr = []; var RyDtArr = [];
+      // for each item in array, format chart array with x and y colon-separated, parse individual variables to relevant types
+      //Penobscot
       for (let i = 0; i < JSONpbDT.length; i++) {
         PbChartArr[i] = {x:JSONpbDT[i],y:parseInt(JSONpbV[i])};
         PbFlowArr[i] = parseInt(JSONpbV[i]);
         PbStageArr[i] = parseFloat(JSONpbH[i]).toFixed(2);
         PbDtArr[i] = JSONpbDT[i];
         }
+      //Royal River
       for (let i = 0; i < JSONryDT.length; i++) {
         RyChartArr[i] = {x:JSONryDT[i],y:parseInt(JSONryV[i])};
         RyFlowArr[i] = parseInt(JSONryV[i]);
         RyStageArr[i] = parseFloat(JSONryH[i]).toFixed(2);
         RyDtArr[i] = JSONryDT[i];
+        //iterate through Royal Flow array and set error values (-999,999) to zero.
+        for (let i = 0; i < RyFlowArr.length; i++) {
+          if (RyFlowArr[i] < 0) {
+            RyFlowArr[i] = 0
+          }}
       }
+      // Slice 30 day arrays down to 7 days to feed secondary view, ~(60/15)*24*7
       var PbFlowArr7d = PbFlowArr.slice(PbFlowArr.length-675); var RyFlowArr7d = RyFlowArr.slice(RyFlowArr.length-675)
       var PbDtArr7d = PbDtArr.slice(PbDtArr.length-675); RyDtArr7d = RyDtArr.slice(RyDtArr.length-675)
       var PbChartArr7d = []; var RyChartArr7d = [];
@@ -46,7 +50,6 @@ $(document).ready(function() {
       for (let i = 0; i < RyDtArr7d.length; i++) {
         RyChartArr7d[i] = {x:RyDtArr7d[i],y:parseInt(RyFlowArr7d[i])};
         }
-
       var ChtStr1 = PbChartArr//.slice(1,-1)
       var ChtStr2 = RyChartArr
       var ChtTest1 = [{x: '2022-09-20T22:30:00.000-04:00', y: 50},{x: '2022-09-20T22:30:00.000-04:15', y: 12},]
@@ -339,8 +342,20 @@ $(document).ready(function() {
     //   $("#mainCont").show()
     // };
   });
+  //Prep DB Connection and Begin Testing
+  //
   $("#tstStr2").html('shitting?')
   $("#tstStr3").html('ye')
 });
 $(window).load(function() {
 });
+
+// CODE GRAVEYARD & SBX REPO //
+
+
+// $("#desc1").mouseenter(function(){
+// 	$("#desc1 h1").stop().animate({color:"#09F"}, 170);
+// 	});
+// $("#desc1").mouseleave(function(){
+// 	$("#desc1 h1").stop().animate({color:"#FFF"}, 170);
+// 	});
