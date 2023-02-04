@@ -13,6 +13,8 @@
   <link href="wd2.css" rel="stylesheet" type="text/css" media="screen and (max-width: 999px)" />
   <link href="wd1.css" rel="stylesheet" type="text/css" media="screen and (min-width: 1000px)" />
   <meta name="description" content="Weather Dashboard by Dylan Sinclair">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/moment-timezone/0.5.31/moment-timezone-with-data.min.js"></script>
   <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
   <script src="wd.js"></script>
   <link href="/images/wdIco.png" rel="icon" type:"image/x-icon">
@@ -32,27 +34,33 @@
   <div id="mainCont">
     <div id="cont1">
       <div id="headDash">
-        <p>Penobscot River Flow: <span id="pnFlow"></span> CFS &emsp; Stage: <span id="pnHt"></span> ft</p>
         <p>Royal River Flow: <span id="rrFlow"></span> CFS &emsp; Stage: <span id="rrHt"></span> ft</p>
+        <p>Penobscot River Flow: <span id="pnFlow"></span> CFS &emsp; Stage: <span id="pnHt"></span> ft</p>
         <p id="updatP">Last Updated: <span id="lastUpdated">[Updating...]</span></p>
+        <p id="execuP">Execution: <span id="execSpeed">[Measuring...]</span> &emsp; Records: <span id="recordCount">[Counting...]</span>  &emsp; Calculations: <span id="calcCount">[Counting...]</span></p>
       </div>
     </div>
     <div id="cont1b">
       <h1>Switch view: </h1>
       <button id="btn1">30 day</button>
     </div>
-    <div id="chartDiv" class="jscChart"></div>
     <div id="chart2Div" class="jscChart"></div>
-    <div id="chart3Div" class="jscChart jscChartHide"></div>
+    <div id="chartDiv" class="jscChart"></div>
     <div id="chart4Div" class="jscChart jscChartHide"></div>
+    <div id="chart3Div" class="jscChart jscChartHide"></div>
+    <p id="rvrNotesLink"><a href="http://dylanxsinclair.com/WeatherDashboard/FlowNotes">*Notes</a></p>
+    <p>Coming Soon:</p>
+    <p>[X] 90 Day Flow Data (Pb) [ ] 90 Day Flow Data Royal [ ] Mousam River data [ ] Sunset/Sunrise Data [ ] Tidal Data [ ] Wind [ ] General Weather [ ] Forecasts </p>
     <div id="testZone" class="wordwrap">
-      <p id="tstStr">Test</p>
-      <p id="tstStr2">Test</p>
-      <p id="tstStr3">Test</p>
+      <p id="tstStr1" class="testElem">Test</p>
+      <p id="tstStr2" class="testElem">Test</p>
+      <p id="tstStr3" class="testElem">Test</p>
+      <p id="tstStr4" class="testElem">Test</p>
     </div>
   </div>
   <div id="weatherCont">
-    <h1>Coming Soon</h1>
+    <h1>Tidal Information</h1>
+    <h2>Based Upon Portland, ME (<a href="https://tidesandcurrents.noaa.gov/stationhome.html?id=8418150">8418150</a>)</h1>
   </div>
 </body>
 </html>
